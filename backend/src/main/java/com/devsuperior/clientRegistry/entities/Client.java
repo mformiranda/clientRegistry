@@ -1,8 +1,9 @@
 package com.devsuperior.clientRegistry.entities;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.Instant;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,14 +21,16 @@ public class Client implements Serializable{
 	private String name;
 	private String cpf;
 	private Double income;
-	private LocalDate birthDate;
+	
+	@Column(name = "birthdate", columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+	private Instant birthDate;
 	private Integer children;
 	
 	
 	public Client() {
 	}
 	
-	public Client(Long id, String name, String cpf, Double income, LocalDate birthDate, Integer children) {
+	public Client(Long id, String name, String cpf, Double income, Instant birthDate, Integer children) {
 		this.id = id;
 		this.name = name;
 		this.cpf = cpf;
@@ -65,11 +68,11 @@ public class Client implements Serializable{
 		this.income = income;
 	}
 	
-	public LocalDate getBirthDate() {
+	public Instant getBirthDate() {
 		return birthDate;
 	}
 	
-	public void setBirthDate(LocalDate birthDate) {
+	public void setBirthDate(Instant birthDate) {
 		this.birthDate = birthDate;
 	}
 	
